@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <title>Telegram Mini-App</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/output.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        /* Make the app fullscreen */
+        #app {
+            display: fullscreen;
+            height: var(--tg-viewport-height);
+        }
+
+        .number {
+            position: absolute;
+            font-size: 44px;
+            font-weight: 900;
+            color: rgb(194, 192, 192);
+            /* Change the color as needed */
+            animation: slideAndFade 2s forwards;
+        }
+
+        @keyframes slideAndFade {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-160px);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-700">
+    <div class=" overflow-hidden  py-10  flex flex-col justify-between" id="app">
+        <div class="" id="">
+
+            <p class="text-center text-base text-white" id="name"></p>
+            <p class="text-center text-4xl text-white" id="count">0</p>
+        </div>
+        <div class="mt-20 flex justify-center">
+            <img src="img/coin.png" alt="" class="w-64" id="coin">
+        </div>
+
+        <div class="" id="">
+
+            <p class="text-white text-xl" id="">Demo tapping telegram webapp</p>
+            <p class="text-white " id="">No data is saved in this demo</p>
+        </div>
+    </div>
+
+    <script>
+        let coins = 0;
+        let touchStartTimestamp;
+
+        let webapp = window.Telegram.WebApp;
+        console.log("log", webapp);
+        webapp.MainButton.hide(true);
+
+        // let height = webapp.viewportHeight;
+        let name = webapp.initDataUnsafe.user.first_name
+        document.querySelector('p#name').textContent = `Hello ${name}`;
+        // document.querySelector('p#data').textContent = initDataUnsafe;
+        webapp.expand(true);
+        webapp.enableClosingConfirmation(true)
+
+        document.querySelector('#coin').addEventListener('touchstart', (e) => {
+            // Record the timestamp when touch starts
+            touchStartTimestamp = new Date().getTime();
+            // Increment coins count
+            coins++;
+            document.querySelector('#count').textContent = coins;
+
+            // Loop through all touches in the touch event
+            for (var i = 0; i < e.touches.length; i++) {
+                let touch = e.touches[i];
+                const x = touch.clientX;
+                const y = touch.clientY;
+                // Create a new element for the number 1
+                var numberElement = document.createElement('div');
+                numberElement.innerText = '+1';
+                numberElement.classList.add('number');
+
+                // Position the number element at the touch coordinates
+                numberElement.style.left = `${x}px`;
+                numberElement.style.top = `${y + 60}px`;
+                document.body.appendChild(numberElement);
+
+                // Schedule removal of the number element after animation completes
+                setTimeout(function () {
+                    numberElement.remove();
+                }, 3000);
+            }
+        });
+
+        // document.querySelector('#coin').addEventListener('touchend', (e) => {
+        //     let touchEndTimestamp = new Date().getTime();
+        //     let timeDiff = touchEndTimestamp - touchStartTimestamp;
+
+        //     // Detect if it's a tap or tap and hold based on time difference
+        //     if (timeDiff < 300) {
+        //         // It's a tap
+        //         // coins++;
+        //         // document.querySelector('#count').textContent = coins;
+        //         // console.log(e.touches);
+        //         // console.log(e.touches[0].clientY);
+        //         console.log("Tap detected");
+        //     } else {
+        //         // It's a tap and hold
+        //         console.log("Tap and Hold detected");
+        //     }
+        // });
+
+        // Prevent default behavior of touchmove to disable swipe to close
+        document.body.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+        });
+
+    </script>
+    <script src="js/script.js"></script>
+
+
+
+</body>
+
+</html>

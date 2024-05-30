@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Mini-App</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/output.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+</head>
+
+<body class="bg-gray-700">
+    <div class="w-screen h-screen " id="">
+
+        <p class="text-center text-4xl mt-10 text-white" id="count">0</p>
+        <div class="mt-20" id="">
+            <img src="img/coin.png" alt="" class="w-96" id="coin">
+        </div>
+
+
+
+    </div>
+    <!-- <h1>Welcome to the Telegram Mini-App</h1> -->
+    <!-- <p class="" id="stay"></p> -->
+    <!-- <p class="" id="name"></p>
+    <p class="" id="id"></p>
+    <p class="" id="username"></p> -->
+
+    <!-- Add content and functionality here -->
+</body>
+<script>
+    // console.log(window.Telegram.WebApp.initData);
+    // document.querySelector('p#stay').textContent = window.Telegram.WebApp.initData;
+    // document.querySelector('p#name').textContent = window.Telegram.WebApp.initDataUnsafe.user.first_name + ' ' + window.Telegram.WebApp.initDataUnsafe.user.last_name;
+    // document.querySelector('p#id').textContent = window.Telegram.WebApp.initDataUnsafe.user.id;
+    // document.querySelector('p#username').textContent = window.Telegram.WebApp.initDataUnsafe.user.username;
+
+    let coins = 0;
+    document.querySelector('#coin').addEventListener('click', (e) => {
+        coins = coins + 1;
+
+        document.querySelector('#count').textContent = coins;
+        // const target = e.target
+
+    });
+</script>
+
+</html>
