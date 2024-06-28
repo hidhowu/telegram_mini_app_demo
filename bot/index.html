@@ -83,7 +83,7 @@
                 let touch = e.touches[i];
                 const x = touch.clientX;
                 const y = touch.clientY;
-                // Create a new element for the number 1
+                // Create a new element for the value
                 var numberElement = document.createElement('div');
                 numberElement.innerText = '+1';
                 numberElement.classList.add('number');
@@ -100,23 +100,6 @@
             }
         });
 
-        // document.querySelector('#coin').addEventListener('touchend', (e) => {
-        //     let touchEndTimestamp = new Date().getTime();
-        //     let timeDiff = touchEndTimestamp - touchStartTimestamp;
-
-        //     // Detect if it's a tap or tap and hold based on time difference
-        //     if (timeDiff < 300) {
-        //         // It's a tap
-        //         // coins++;
-        //         // document.querySelector('#count').textContent = coins;
-        //         // console.log(e.touches);
-        //         // console.log(e.touches[0].clientY);
-        //         console.log("Tap detected");
-        //     } else {
-        //         // It's a tap and hold
-        //         console.log("Tap and Hold detected");
-        //     }
-        // });
 
         // Prevent default behavior of touchmove to disable swipe to close
         document.body.addEventListener('touchmove', (e) => {

@@ -1,11 +1,10 @@
+require('dotenv').config();
 const express = require('express');
 const TelegramBot = require('node-telegram-bot-api');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const botToken = '7496688147:AAHM52ute3rbaZuSP92Hb9ZXpH3L_3Ljqw4'; // Replace with your actual bot token
-// const botToken = '7401756498:AAEKhlbdzS3sgoYRGQkloiuU-tfKMbl-5bU'; // Replace with your actual bot token
-// const bot = new TelegramBot(botToken);
+const botToken = process.env.BOT_API; // Replace with your actual bot token
 const bot = new TelegramBot(botToken, { polling: true });
 const QRCode = require('qrcode');
 

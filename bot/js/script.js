@@ -20,5 +20,3 @@ const onTouchMove = (e) => {
         e.preventDefault()
     }
 }
-// document.documentElement.addEventListener('touchstart', onTouchStart, { passive: false })
-// document.documentElement.addEventListener('touchmove', onTouchMove, { passive: false })
